@@ -42,7 +42,7 @@ async function loadMahasiswa(keyword = '') {
 
         //Percobaan 6-1 Langkah 4 susun url request
         const url = keyword ?
-        `$(API_URL)?search=${encodeURIComponent(keyword)}` : API URL;
+        `$(API_URL)?search=${encodeURIComponent(keyword)}` : API_URL;
 
         //Percobaan 6-1 Langkah 4 kirim request
         const response = await fetch(url);
@@ -177,10 +177,10 @@ if (formEdit) {
 // 4. Fetch API POST: Menambahkan Data Baru Tanpa Reload
 if (formTambah) {
     formTambah.addEventListener('submit', async function (event) {
-        event.preventDefault();
+        
         // Percobaan 6-2 Langkah 3 
+        event.preventDefault();
 
-        const dataMahasiswa = {
             // Percobaan 6-2 Langkah 4
             const dataMahasiswa = {
                 npm: document.getElementById('npm').value.trim(),
@@ -190,7 +190,6 @@ if (formTambah) {
                 email: document.getElementById('email').value.trim()
             };
 
-        };
 
         try {
             // Percobaan 6-2 Langkah 5
@@ -213,7 +212,6 @@ if (formTambah) {
             showAlert(`Terjadi kesalahan koneksi: ${error.message}`, 'danger');
         }
     });
-}
 
 // 5. Fetch API DELETE: Menghapus Data Secara Asinkron
 async function deleteMahasiswa(id, nama) {
@@ -240,3 +238,4 @@ if (inputSearch) {
 }
 
 // Inisialisasi: Panggil Data Pertama Kali
+loadMahasiswa();
